@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gamemarket
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+        hibernate:
+            format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#  Jackson이 Java의 날짜/시간을 JSON으로 직렬화할 때 숫자(timestamp) 대신
+#  사람이 읽을 수 있는 문자열 형태로 변환하도록 지정
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+# mybatis 설정
+mybatis:
+    mapper-locations: classpath*:mappers/**/*.xml
+#    XML에서는 그냥 User이렇게 alias를 사용하기 위함
+    type-aliases-package: com.example.gamemarket
+
+server:
+  port: 8080
