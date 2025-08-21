@@ -1,4 +1,4 @@
-package com.gamemarket.salePost.entity;
+package com.gamemarket.salepost.entity;
 
 
 import com.gamemarket.audit.BaseEntity;
@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "sale_posts")
 public class SalePost extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

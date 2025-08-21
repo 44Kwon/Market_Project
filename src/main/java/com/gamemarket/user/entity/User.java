@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Table(name = "users")
 public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
@@ -23,6 +24,7 @@ public class User extends BaseEntity {
     private String username;
     private String email;
     private String password;
+    private Integer point; // 유저 포인트
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -35,6 +37,7 @@ public class User extends BaseEntity {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.point = 500; // 기본 포인트 500으로 설정
         this.role = (role == null) ? Role.USER : role;
     }
 }

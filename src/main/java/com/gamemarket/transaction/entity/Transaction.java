@@ -1,7 +1,7 @@
 package com.gamemarket.transaction.entity;
 
 import com.gamemarket.item.entity.Item;
-import com.gamemarket.salePost.entity.SalePost;
+import com.gamemarket.salepost.entity.SalePost;
 import com.gamemarket.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "transactions")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
