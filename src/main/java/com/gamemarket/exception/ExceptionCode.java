@@ -5,7 +5,13 @@ import lombok.Getter;
 @Getter
 public enum ExceptionCode {
 
-    USER_NOT_FOUND(404, "User not found");
+    //유저
+    USER_USERNAME_DUPLICATED(409, "이미 사용 중인 아이디입니다"),
+    USER_EMAIL_DUPLICATED(409, "이미 사용 중인 이메일입니다"),
+    USER_NOT_FOUND(404, "유저가 존재하지 않습니다"),
+
+    //비밀번호
+    PASSWORD_SAME_AS_OLD(400, "새로운 비밀번호는 현재 비밀번호와 달라야 합니다");
 
     private int status;
     private String message;
