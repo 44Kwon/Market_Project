@@ -40,4 +40,9 @@ public class User extends BaseEntity {
         this.point = 500; // 기본 포인트 500으로 설정
         this.role = (role == null) ? Role.USER : role;
     }
+
+    //비밀번호 변경
+    public void updatePassword(String newPassword){
+        this.password = newPassword;
+    }
 }
