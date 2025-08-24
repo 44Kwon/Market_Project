@@ -2,12 +2,11 @@ package com.gamemarket.user.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 public class UserServiceDto {
     @Getter
     @AllArgsConstructor
-    public static class create {
+    public static class Create {
         private String username;
         private String email;
         private String password;
@@ -15,7 +14,7 @@ public class UserServiceDto {
 
     @Getter
     @AllArgsConstructor
-    public static class updatePassword {
+    public static class UpdatePassword {
         private String currentPw;
         private String newPw;
     }

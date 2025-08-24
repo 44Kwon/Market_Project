@@ -1,7 +1,5 @@
 package com.gamemarket.user.service;
 
-import com.gamemarket.exception.BusinessLogicException;
-import com.gamemarket.exception.ExceptionCode;
 import com.gamemarket.user.dto.PointResponse;
 import com.gamemarket.user.dto.UserResponseDto;
 import com.gamemarket.user.entity.User;
@@ -26,7 +24,7 @@ public class UserService {
 //    회원 포인트 충전	POST	/api/users/{id}/points/charge	포인트 충전 (PointHistory 기록)
 
     //회원가입
-    public Long createUser(UserServiceDto.create create) {
+    public Long createUser(UserServiceDto.Create create) {
         User createUser = userMapper.createToUser(create);
         //검증로직
         userValidator.validate(createUser);
@@ -37,7 +35,7 @@ public class UserService {
     }
 
     //비밀번호 변경
-    public void updatePassword(Long userId, UserServiceDto.updatePassword updatePassword) {
+    public void updatePassword(Long userId, UserServiceDto.UpdatePassword updatePassword) {
         //검증로직
         userValidator.validateNewPassword(updatePassword);
 

@@ -25,18 +25,18 @@ public class UserValidator {
     }
 
     public void validateUsername(String username) {
-        if (userRepository.existsUserByUsername(username)) {
+        if (userRepository.existsByUsername(username)) {
             throw new BusinessLogicException(ExceptionCode.USER_USERNAME_DUPLICATED);
         }
     }
 
     public void validateEmail(String email) {
-        if (userRepository.existsUserByUsername(email)) {
+        if (userRepository.existsByUsername(email)) {
             throw new BusinessLogicException(ExceptionCode.USER_EMAIL_DUPLICATED);
         }
     }
 
-    public void validateNewPassword(UserServiceDto.updatePassword updatePasswordDto) {
+    public void validateNewPassword(UserServiceDto.UpdatePassword updatePasswordDto) {
         if (updatePasswordDto.getCurrentPw().equals(updatePasswordDto.getNewPw())) {
             throw new BusinessLogicException(ExceptionCode.PASSWORD_SAME_AS_OLD);
         }
@@ -45,5 +45,12 @@ public class UserValidator {
     // userId로 유저 존재 여부 검증
     public User findVerifiedUser(Long userId) {
         return userRepository.findById(userId).orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+    }
+
+    //관리자인지
+    public void ifAdmin(Long userId) {
+        if (!userRepository.existsByIdAndRole(userId, User.Role.ADMIN)) {
+            throw new BusinessLogicException(ExceptionCode.INVALID_ACCESS);
+        }
     }
 }
