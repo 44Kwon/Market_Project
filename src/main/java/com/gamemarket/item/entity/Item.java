@@ -24,7 +24,7 @@ public class Item extends BaseEntity {
     private Rarity rarity;
 
     private boolean tradable; // 아이템 거래 가능 여부
-    private Integer basePrice; // 아이템 기본 가격
+    private Integer basePrice; // 아이템 기본 가격 // null 가능(무료아이템)
 //    private String imageUrl; // 아이템 이미지 URL
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,11 +37,12 @@ public class Item extends BaseEntity {
     }
 
     @Builder
-    private Item(String name, String description, Rarity rarity, boolean tradable, Integer basePrice, Game game) {
+    private Item(String name, String description, Rarity rarity, Boolean tradable, Integer basePrice, Game game) {
         this.name = name;
         this.description = description;
         this.rarity = rarity == null ? Rarity.COMMON : rarity;
-        this.tradable = tradable;
+        // tradable이 null이거나 true면 true, false면 false
+        this.tradable = tradable == null || tradable;
         this.basePrice = basePrice;
         this.game = game;
     }
